@@ -31,6 +31,13 @@ var mockupJSON = {
             "date": 1538670516999,
             "photo": "img/harvey.jpg",
             "comment" : "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula."
+        },
+        {
+            "id": 4,
+            "name": "Louis Litt",
+            "date": 1538670517000,
+            "photo": "img/harvey.jpg",
+            "comment" : "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula."
         }
     ]
 }
@@ -134,6 +141,7 @@ function newComment() {
     const commentText = commentInput.value;
     data.addComment(commentText, userName, userPhoto);
     commentsContent.innerHTML = renderComments();
+    scrollCommentsToBottom();
 }
 
 function sortByDate(a,b) {
@@ -142,6 +150,14 @@ function sortByDate(a,b) {
 
 function hideComments() {
     commentsContent.classList.toggle('comwdgt-top-comments-content-hide');
+}
+
+function scrollCommentsToBottom() {
+    commentsContent.scroll({
+        top: commentsContent.scrollHeight,
+        left: 0,
+        behavior: "smooth"
+    });
 }
 
 var data = new DataService();
